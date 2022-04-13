@@ -25,6 +25,7 @@ public class Sketch extends PApplet {
   public void setup() {
     background(0, 0, 0);
     bgImage = loadImage("backG.jpg");
+    nana = loadImage("nana.png");
     
   }
 
@@ -41,14 +42,14 @@ public class Sketch extends PApplet {
     if(circle < 0 || circle > height){
       cirSpeed = cirSpeed * -1;
     }
-    nana = loadImage("nana.png");
-    image(nana, 0, 0);
+    
+    image(nana, bNana, width/2);
     bNana = bNana + nanaSped;
     
+        
     if(bNana < 0 || bNana > width){
       nanaSped = nanaSped * -1;
     }
-
 
   }
   
