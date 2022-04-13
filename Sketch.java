@@ -1,14 +1,21 @@
 import processing.core.PApplet;
+import processing.core.PImage;
 
 public class Sketch extends PApplet {
 	
-	
+	float circle = 0;
+  float cirSpeed = 1;
+  PImage bgImage;
+  PImage nana;
+  float bNana = 0;
+  float nanaSped = 1;
   /**
    * Called once at the beginning of execution, put your size all in this method
    */
   public void settings() {
 	// put your size call here
     size(400, 400);
+    
   }
 
   /** 
@@ -16,7 +23,9 @@ public class Sketch extends PApplet {
    * values here i.e background, stroke, fill etc.
    */
   public void setup() {
-    background(210, 255, 173);
+    background(0, 0, 0);
+    bgImage = loadImage("backG.jpg");
+    
   }
 
   /**
@@ -24,12 +33,23 @@ public class Sketch extends PApplet {
    */
   public void draw() {
 	  
-	// sample code, delete this stuff
-    stroke(128);
-    line(150, 25, 270, 350);  
+    image(bgImage,0, 0);
+    ellipse(200, circle, 50, 50);
 
-    stroke(255);
-    line(50, 125, 70, 50);  
+    circle = circle+cirSpeed;
+ 
+    if(circle < 0 || circle > height){
+      cirSpeed = cirSpeed * -1;
+    }
+    nana = loadImage("nana.png");
+    image(nana, 0, 0);
+    bNana = bNana + nanaSped;
+    
+    if(bNana < 0 || bNana > width){
+      nanaSped = nanaSped * -1;
+    }
+
+
   }
   
   // define other methods down here.
