@@ -3,18 +3,18 @@ import processing.core.PImage;
 
 public class Sketch extends PApplet {
 	
-	float circle = 0;
-  float cirSpeed = 1;
+  //universal variables for my objects
   PImage bgImage;
   PImage nana;
   float bNana = 0;
   float nanaSped = 1;
+  float rotate = 0;
   /**
    * Called once at the beginning of execution, put your size all in this method
    */
   public void settings() {
 	// put your size call here
-    size(400, 400);
+    size(800, 600);
     
   }
 
@@ -23,6 +23,7 @@ public class Sketch extends PApplet {
    * values here i.e background, stroke, fill etc.
    */
   public void setup() {
+   //load images
     background(0, 0, 0);
     bgImage = loadImage("backG.jpg");
     nana = loadImage("nana.png");
@@ -33,23 +34,25 @@ public class Sketch extends PApplet {
    * Called repeatedly, anything drawn to the screen goes here
    */
   public void draw() {
-	  
+    //draw background
     image(bgImage,0, 0);
-    ellipse(200, circle, 50, 50);
-
-    circle = circle+cirSpeed;
- 
-    if(circle < 0 || circle > height){
-      cirSpeed = cirSpeed * -1;
-    }
     
+    //draw banana and makes it move with collision
     image(nana, bNana, width/2);
-    bNana = bNana + nanaSped;
-    
-        
+      bNana = bNana+ nanaSped;
+
     if(bNana < 0 || bNana > width){
       nanaSped = nanaSped * -1;
     }
+    	  
+    //Draw square and makes it rotate
+    translate(400, 300);
+    rotate(radians(rotate));
+    rect(-10, 0, 50, 50);
+    rotate += 1;
+
+
+
 
   }
   
